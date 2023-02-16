@@ -165,6 +165,7 @@ with Diagram("Basic Application Architecture", show=True, filename="architecture
         APP04 >>Edge(color='red')>> DB
         APP05 >>Edge(color='red')>> DB
         APP06 >>Edge(color='red')>> DB
+        APP01 >>Edge(color='black')>> APP02
         APP02 >>Edge(color='black')>> APP03
         APP03 >>Edge(color='red')>> NOTIFICACIONES
         
