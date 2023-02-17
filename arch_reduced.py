@@ -94,15 +94,22 @@ with Diagram("Basic Application Architecture", show=True, filename="architecture
                
         with Cluster('MS-APP Pod'):
             AppPod=Pod('POD MS-APP')  
-            with Cluster('MS-Back'):
+            with Cluster('MS-Backend'):
                 APP01=Custom('clientManager', quarkusimg)
                 APP02=Custom('operations', quarkusimg)
                 APP03=Custom('Notifications', quarkusimg)
                 APP04=Custom('Sites', quarkusimg)
+                
+        with Cluster('MS-APP SUPORT'):
+             
+            AppPod2=Pod('POD MS-SUPPORT')  
+            with Cluster('MS-Backend'):
+
                 APP05=Custom('Resources', quarkusimg)
                 APP06=Custom('Forms', quarkusimg)
        
         AppPod >>Edge(color='black',style="dotted")>> OBS
+        AppPod2 >>Edge(color='black',style="dotted")>> OBS
        
 
         agw >> Edge(color='darkgreen', label='https') >> APP01
