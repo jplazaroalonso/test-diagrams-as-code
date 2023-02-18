@@ -1,0 +1,155 @@
+digraph "Basic Application Architecture" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="Basic Application Architecture" nodesep=0.60 pad=2.0 rankdir=TB ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	c773a6bb442c4166add89e5958e27d32 [label=User height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/onprem/client\users.png" shape=none]
+	subgraph cluster_Wallet {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Wallet labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"321f749f13d74b539c0a9ada7f239249" [label=WALLET height=1.9 image="./my-resources/Android-IOS.png" shape=none]
+	}
+	subgraph cluster_Game {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Game labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"35591e87ab1b4a74b48b2779a9ce8e73" [label=GAME height=1.9 image="./my-resources/gameicon.png" shape=none]
+	}
+	subgraph cluster_CloudWatch {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=CloudWatch labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"53cc5a66df4344c089ef84218f9788e0" [label=CloudWatch height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/aws/management\cloudwatch.png" shape=none]
+	}
+	subgraph cluster_Bucket {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Bucket labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"2bb9da3a73bb4c018bfc648e56906988" [label="S3-Bucket" height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/aws/storage\simple-storage-service-s3.png" shape=none]
+	}
+	subgraph cluster_Xray {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Xray labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"242a07f83f1e4f7c93e4b0fa550c7c80" [label=Trace height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/aws/devtools\x-ray.png" shape=none]
+	}
+	subgraph "cluster_API GW" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="API GW" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"741a35b6fe014ae3ae97afdc7c970173" [label="API GW" height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/aws/mobile\api-gateway.png" shape=none]
+	}
+	subgraph cluster_Database {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Database labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"2a112f8edbf0406da1ae1e71a8b57043" [label=Aurora height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/aws/database\aurora.png" shape=none]
+	}
+	subgraph cluster_Notificaciones {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Notificaciones labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		c7def9392fda49858ecf3f1de8311c27 [label=Firebase height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/firebase/base\firebase.png" shape=none]
+	}
+	subgraph cluster_Monitoring {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Monitoring labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		d9357b550ff249e6b1987d063d3c9957 [label=GRAFANA height=1.9 image="./my-resources/grafana.png" shape=none]
+	}
+	subgraph cluster_Security {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Security labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		subgraph "cluster_SEC-TOOLS" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="SEC-TOOLS" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			subgraph cluster_OAUTH {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=12 label=OAUTH labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+				fcd73ffd396744459976d1d04a073e7c [label="" height=1.9 image="./my-resources/Security.png" shape=none]
+			}
+			subgraph cluster_FIREBASE {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=12 label=FIREBASE labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+				d7c82cb344624701abca244e971295a9 [label="" height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/firebase/base\firebase.png" shape=none]
+				subgraph cluster_FIREBASE {
+					graph [bgcolor="#FDF7E3" fontname="Sans-Serif" fontsize=12 label=FIREBASE labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+					"3f670c3b463043f58b89dc6be19df6f5" [label=Authentication height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/firebase/develop\authentication.png" shape=none]
+				}
+			}
+		}
+	}
+	subgraph "cluster_Security Providers" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="Security Providers" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		subgraph cluster_Auth {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label=Auth labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			"306e25308a4642c099f80aa99353e428" [label=APPLE height=1.9 image="./my-resources/apple.png" shape=none]
+			"4228da618ed549e59b74eccdc99565d6" [label=APPLE height=1.9 image="./my-resources/google.png" shape=none]
+		}
+	}
+	"3f670c3b463043f58b89dc6be19df6f5" -> "306e25308a4642c099f80aa99353e428" [color=RED dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	"3f670c3b463043f58b89dc6be19df6f5" -> "4228da618ed549e59b74eccdc99565d6" [color=RED dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	c0618b3b40aa4f17958e7f154438cc53 -> "53cc5a66df4344c089ef84218f9788e0" [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	c0618b3b40aa4f17958e7f154438cc53 -> "242a07f83f1e4f7c93e4b0fa550c7c80" [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	"18fad36d06cb45e989b1158502021ce4" -> "53cc5a66df4344c089ef84218f9788e0" [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	"18fad36d06cb45e989b1158502021ce4" -> "242a07f83f1e4f7c93e4b0fa550c7c80" [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	"054296ca0cf74e148024ba15cda1e950" -> "2bb9da3a73bb4c018bfc648e56906988" [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 style=dotted]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "054296ca0cf74e148024ba15cda1e950" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "73dbe66ade514b80aa54bc17862167b9" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "0248cca64ad447a4ba3661381f2ec2db" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "0585a23313ba418aaf5d8b849a18a32d" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "3eab4dc07c32466091ba1cf6afe8e186" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> b90f439b0c244d748e655deca6a9f57e [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "724fa6aaa87c438597990857e77fcf21" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "724fa6aaa87c438597990857e77fcf21" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> fd7cd3b641a847b4bee2ea7156dedde3 [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> b6c4240b9fa841328912a43f9ead96dd [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "1b46f3574f5d4106a9e19884a9e9dc35" [label=https color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"054296ca0cf74e148024ba15cda1e950" -> ac0bb3a772dc4896a1882dc4a0d3bbad [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"73dbe66ade514b80aa54bc17862167b9" -> "36058f9a1d9943ca801588b58bcbbd12" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0248cca64ad447a4ba3661381f2ec2db" -> "36058f9a1d9943ca801588b58bcbbd12" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0585a23313ba418aaf5d8b849a18a32d" -> "36058f9a1d9943ca801588b58bcbbd12" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"3eab4dc07c32466091ba1cf6afe8e186" -> ac0bb3a772dc4896a1882dc4a0d3bbad [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b90f439b0c244d748e655deca6a9f57e -> ac0bb3a772dc4896a1882dc4a0d3bbad [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"724fa6aaa87c438597990857e77fcf21" -> ac0bb3a772dc4896a1882dc4a0d3bbad [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"87c05bcd17ac4b7b8328d6084e18a149" -> ac0bb3a772dc4896a1882dc4a0d3bbad [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	fd7cd3b641a847b4bee2ea7156dedde3 -> "22b8d1e27ecc4539a96e54051dd2aeec" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	b6c4240b9fa841328912a43f9ead96dd -> "36058f9a1d9943ca801588b58bcbbd12" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"1b46f3574f5d4106a9e19884a9e9dc35" -> "36058f9a1d9943ca801588b58bcbbd12" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0d4b2cb82d2149228bb57d7dc8fd4715" -> "36058f9a1d9943ca801588b58bcbbd12" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"36058f9a1d9943ca801588b58bcbbd12" -> "2a112f8edbf0406da1ae1e71a8b57043" [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	ac0bb3a772dc4896a1882dc4a0d3bbad -> "2a112f8edbf0406da1ae1e71a8b57043" [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	d60b66cc436445ee93833739670b15fc -> "2a112f8edbf0406da1ae1e71a8b57043" [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"22b8d1e27ecc4539a96e54051dd2aeec" -> "2a112f8edbf0406da1ae1e71a8b57043" [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	cebc5d0dff10480eaed4161b05713506 -> "2a112f8edbf0406da1ae1e71a8b57043" [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"89ca73ca5d084fef916fb904f926673b" -> "2a112f8edbf0406da1ae1e71a8b57043" [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"36058f9a1d9943ca801588b58bcbbd12" -> ac0bb3a772dc4896a1882dc4a0d3bbad [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	ac0bb3a772dc4896a1882dc4a0d3bbad -> d60b66cc436445ee93833739670b15fc [color=black dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	d60b66cc436445ee93833739670b15fc -> c7def9392fda49858ecf3f1de8311c27 [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	subgraph cluster_Kubernetes {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Kubernetes labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		b79364f45d6e4ca6a47403dbd4b4e38c [label=EKS height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/aws/compute\elastic-kubernetes-service.png" shape=none]
+		subgraph "cluster_MS-BFF Pod" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="MS-BFF Pod" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			c0618b3b40aa4f17958e7f154438cc53 [label="POD MS-BFF" height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/k8s/compute\pod.png" shape=none]
+			subgraph "cluster_MS-BFF" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=12 label="MS-BFF" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+				"054296ca0cf74e148024ba15cda1e950" [label=validateApp height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"73dbe66ade514b80aa54bc17862167b9" [label=commitTransaction height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"0248cca64ad447a4ba3661381f2ec2db" [label=registroFirebase height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"0585a23313ba418aaf5d8b849a18a32d" [label=gameList height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"3eab4dc07c32466091ba1cf6afe8e186" [label=accountsTokens height=1.9 image="./my-resources/quarkus.png" shape=none]
+				b90f439b0c244d748e655deca6a9f57e [label=tokenList height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"724fa6aaa87c438597990857e77fcf21" [label=transferToken height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"87c05bcd17ac4b7b8328d6084e18a149" [label=paymentTokens height=1.9 image="./my-resources/quarkus.png" shape=none]
+				fd7cd3b641a847b4bee2ea7156dedde3 [label=findSites height=1.9 image="./my-resources/quarkus.png" shape=none]
+				b6c4240b9fa841328912a43f9ead96dd [label=accountInfo height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"1b46f3574f5d4106a9e19884a9e9dc35" [label=updateAccount height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"0d4b2cb82d2149228bb57d7dc8fd4715" [label=findAccount height=1.9 image="./my-resources/quarkus.png" shape=none]
+			}
+		}
+		subgraph "cluster_MS-APP Pod" {
+			graph [bgcolor="#EBF3E7" fontname="Sans-Serif" fontsize=12 label="MS-APP Pod" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+			"18fad36d06cb45e989b1158502021ce4" [label="POD MS-APP" height=1.9 image="C:\Users\jplazaro\AppData\Local\Programs\Python\Python311\Lib\site-packages\resources/k8s/compute\pod.png" shape=none]
+			subgraph "cluster_MS-Back" {
+				graph [bgcolor="#ECE8F6" fontname="Sans-Serif" fontsize=12 label="MS-Back" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+				"36058f9a1d9943ca801588b58bcbbd12" [label=clientManager height=1.9 image="./my-resources/quarkus.png" shape=none]
+				ac0bb3a772dc4896a1882dc4a0d3bbad [label=operations height=1.9 image="./my-resources/quarkus.png" shape=none]
+				d60b66cc436445ee93833739670b15fc [label=Notifications height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"22b8d1e27ecc4539a96e54051dd2aeec" [label=Sites height=1.9 image="./my-resources/quarkus.png" shape=none]
+				cebc5d0dff10480eaed4161b05713506 [label=Resources height=1.9 image="./my-resources/quarkus.png" shape=none]
+				"89ca73ca5d084fef916fb904f926673b" [label=Forms height=1.9 image="./my-resources/quarkus.png" shape=none]
+			}
+		}
+	}
+	c773a6bb442c4166add89e5958e27d32 -> "35591e87ab1b4a74b48b2779a9ce8e73" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	c773a6bb442c4166add89e5958e27d32 -> "321f749f13d74b539c0a9ada7f239249" [color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"321f749f13d74b539c0a9ada7f239249" -> "741a35b6fe014ae3ae97afdc7c970173" [label=jwt color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"35591e87ab1b4a74b48b2779a9ce8e73" -> "741a35b6fe014ae3ae97afdc7c970173" [label=jwt color=darkgreen dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	fcd73ffd396744459976d1d04a073e7c -> "741a35b6fe014ae3ae97afdc7c970173" [color=darkred dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	d7c82cb344624701abca244e971295a9 -> "741a35b6fe014ae3ae97afdc7c970173" [color=darkred dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> fcd73ffd396744459976d1d04a073e7c [color=darkred dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> d7c82cb344624701abca244e971295a9 [color=darkred dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "321f749f13d74b539c0a9ada7f239249" [label=jwt color=darkred dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"741a35b6fe014ae3ae97afdc7c970173" -> "35591e87ab1b4a74b48b2779a9ce8e73" [label=jwt color=darkred dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"53cc5a66df4344c089ef84218f9788e0" -> d9357b550ff249e6b1987d063d3c9957 [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"242a07f83f1e4f7c93e4b0fa550c7c80" -> d9357b550ff249e6b1987d063d3c9957 [color=red dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}

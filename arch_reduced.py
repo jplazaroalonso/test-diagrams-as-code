@@ -19,6 +19,10 @@ from diagrams.aws.storage import S3
 from diagrams.firebase.base import Firebase
 from diagrams.firebase.develop import Authentication
 from diagrams.aws.integration import  SNS ,SimpleNotificationServiceSnsTopic
+from diagrams.aws.security import WAF
+from diagrams.aws.security import Cognito
+from diagrams.aws.database import  DDB
+from diagrams.aws.mobile import Appsync, Amplify
 
 
 quarkusimg= './my-resources/quarkus.png'
@@ -31,6 +35,7 @@ securityimg='./my-resources/Security.png'
 securityappleimg='./my-resources/apple.png'
 securitygoogleimg='./my-resources/google.png'
 oauthimg='./my-resources/oauth.png'
+identityProviderimg='./my-resources/identityProvider.png'
 
 graph_attr = {
    
@@ -39,12 +44,16 @@ graph_attr = {
 
 with Diagram("Basic Application Architecture", show=True, filename="architecture_reduced", direction="TB", graph_attr=graph_attr):
    
-    with Cluster ('Users'):
-        usr=Users('')
-   
-    
+
+    with Cluster ('Access'):
+        Perimeter=WAF('')
+        agw = APIGateway('API GW')
+        
     with Cluster ('Wallet'):
         WALLET=Custom('WALLET', android_iosimg)
+   
+    with Cluster ('APP'):
+        APP=Custom('MOBILE', android_iosimg)
    
     with Cluster ('Game'):
         GAME=Custom('GAME', gameimg)
@@ -56,37 +65,36 @@ with Diagram("Basic Application Architecture", show=True, filename="architecture
         OBS=[XRay('Trace') , Cloudwatch('CloudWatch')]
         
        
-    with Cluster ('API GW'):
-        agw = APIGateway('API GW')
+ 
+        
    
     with Cluster ('Database') :
         DB=Aurora('Aurora')
+        NOSQL=DDB('NoSQL')
         
     with Cluster ('Notificaciones') :
-        NOTIFICACIONES=Firebase('Firebase')
+        NOTIFICACIONES=SNS('SNS')
 
     with Cluster ('Monitoring'):
         GRAFANA=Custom('GRAFANA', grafanaimg)
 
     with Cluster ('Pub/Sub - SNS'):
-        PUBSUB=SNS('TOPIC')
+        PUBSUB=SimpleNotificationServiceSnsTopic('TOPIC')
                        
     with Cluster ('Security'):
         with Cluster('SEC-TOOLS'):
             SEC=Custom('',securityimg)   
             with Cluster('OAUTH'):
-                OAUTH=Custom('',oauthimg)   
-            with Cluster('FIREBASE'):
-                FIREBASE=Firebase('')
-                with Cluster('FIREBASE'):
-                    AUTH=Authentication('Authentication')
+                AUTH=[Custom('',oauthimg), Amplify(''),Cognito('')]
+           
    
     with Cluster ('Security Providers'):
+        Providers=Custom('',identityProviderimg)   
         with Cluster('Auth'):
             APPLE=Custom('APPLE', securityappleimg)
             GOOGLE=Custom('APPLE', securitygoogleimg)
-    AUTH >> Edge(color='RED',style="dotted")>> APPLE
-    AUTH >> Edge(color='RED',style="dotted")>> GOOGLE
+    SEC >> Edge(color='RED',style="dotted")>> Providers
+ 
    
     with Cluster ('Kubernetes'):
         EKS= ElasticKubernetesService('EKS')
@@ -135,23 +143,22 @@ with Diagram("Basic Application Architecture", show=True, filename="architecture
         
         AppPod >>Edge(color='red')>> bucket
  
-    WALLET >> Edge(color='darkgreen') >> agw 
+    WALLET >> Edge(color='darkgreen') >> Perimeter
+    Perimeter >> Edge(color='darkgreen') >> agw
+     
+    GAME >> Edge(color='darkgreen') >> Perimeter 
     
-    GAME >> Edge(color='darkgreen') >> agw 
     
-    SEC >> Edge(color='darkred') >> agw
    
     
     agw >> Edge(color='darkred') >> SEC
    
     
-    agw >> Edge(color='darkred') >>  WALLET
-    agw >> Edge(color='darkred') >>  GAME
 
-    usr >> Edge(color='black') >>  WALLET
-    usr >> Edge(color='black') >>  GAME
+
+  
        
     OBS >> Edge(color='red') >> GRAFANA
     
     
-    NOTIFICACIONES >> Edge(color='darkred') >> WALLET
+    NOTIFICACIONES >> Edge(color='darkred') >> APP
